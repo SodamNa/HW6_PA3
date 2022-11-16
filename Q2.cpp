@@ -12,13 +12,15 @@ class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
         if(!root){ //Excute only when root doesn't exist
-          return new TreeNode(val); //Make a new Treenode
+          return new TreeNode(val); //Make a new Treenode. (Base case to end recursion)
         }
         if(root->val > val){ //If a value of root is larger than the given value
-          root->left = insertIntoBST(root->left, val); //Excute insertIntoBST function until it returns a new Treenode containing of the given value.
+          root->left = insertIntoBST(root->left, val); //Excute insertIntoBST function until it returns 
+                                                       //a new Treenode containing of the given value and assign the new node to the empty root.
         }
         else{ //If a value of root is smaller than the given value
-          root->right = insertIntoBST(root->right, val); //Excute insertIntoBST function until it returns a new Treenode containing of the given value.
+          root->right = insertIntoBST(root->right, val); //Excute insertIntoBST function until it returns 
+                                                         //a new Treenode containing of the given value and assign the new node to the empty root. 
         }
         return root; //Return root after insertion.
     }
