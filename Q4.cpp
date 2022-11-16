@@ -10,19 +10,17 @@ struct TreeNode {
 
 class Solution {
 public:
-    void inorderhelp(TreeNode* root, vector<int>& x){ //Help function
-        
-        if(root == NULL){ //If root doesn't exist, finish the function.
-            return;
-        }
-        inorderhelp(root->left, x);  
-        x.push_back(root->val);      
-        inorderhelp(root->right, x); 
+    vector<int> postorderTraversal(TreeNode* root) { //Make a vector function to return values of TreeNode
+        vector<int> sol; //Make a new vector to store values of TreeNode in postorder traverse.
+        postorder(root, sol); //Excute recursion function until it stores all values of TreeNode
+        return sol; //Return the vector storage containing the values of TreeNode in postorder traverse. 
     }
-    
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> x;
-        inorderhelp(root, x);
-        return x;
+private:
+    void postorder(TreeNode* root, vector<int>& sol) { //Help function, recursion.
+        if (!root) //Excute when root == NULL, namely root doesn't exist.
+            return; //Finish this function.
+        postorder(root->left, sol); //Move to a left child of the root and excute the function again.
+        postorder(root->right, sol); //Move to a right child of the root and excute the function again.
+        sol.push_back(root->val); //Add the value of root to the vector storage. 
     }
 };
