@@ -11,15 +11,15 @@ struct TreeNode {
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
-        if(!root){
-          return new TreeNode(val);
+        if(!root){ //Excute only when root doesn't exist
+          return new TreeNode(val); //Make a new Treenode
         }
-        if(root->val > val){
-          root->left = insertIntoBST(root->left, val);
+        if(root->val > val){ //If a value of root is larger than the given value
+          root->left = insertIntoBST(root->left, val); //Excute insertIntoBST function until it returns a new Treenode containing of the given value.
         }
-        else{
-          root->right = insertIntoBST(root->right, val);
+        else{ //If a value of root is smaller than the given value
+          root->right = insertIntoBST(root->right, val); //Excute insertIntoBST function until it returns a new Treenode containing of the given value.
         }
-        return root;
+        return root; //Return root after insertion.
     }
 };
